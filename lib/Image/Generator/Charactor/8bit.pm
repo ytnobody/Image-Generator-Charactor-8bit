@@ -40,15 +40,26 @@ __END__
 
 =head1 NAME
 
-Image::Generator::Charactor::8bit - It's new $module
+Image::Generator::Charactor::8bit - 8bit Charactor Image Generator
 
 =head1 SYNOPSIS
 
+If you want to generate an image of humanoid character,
+
     use Image::Generator::Charactor::8bit;
+    my $human = Image::Generator::Charactor::8bit->load_parts('Humanoid');
+    $human->write(file => '/tmp/human.png');
+
+and, If you want to generate another image of humanoid that has green skin,
+
+    use Imager;
+    use Image::Generator::Charactor::8bit;
+    my $nameck = Image::Generator::Charactor::8bit->load_parts('Humanoid', Imager::Color->new(105, 210, 92));
+    $nameck->write(file => '/tmp/nameck.png');
 
 =head1 DESCRIPTION
 
-Image::Generator::Charactor::8bit is ...
+Image::Generator::Charactor::8bit is retro-futurism charactor image generator.
 
 =head1 LICENSE
 

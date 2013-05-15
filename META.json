@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "8bit Charactor Image Generator",
    "author" : [
       "ytnobody <ytnobody@gmail.com>"
    ],
@@ -42,6 +42,7 @@
       },
       "runtime" : {
          "requires" : {
+            "Imager" : "0",
             "perl" : "5.008005"
          }
       },
@@ -52,5 +53,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ytnobody/Image-Generator-Charactor-8bit/issues"
+      },
+      "homepage" : "https://github.com/ytnobody/Image-Generator-Charactor-8bit",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ytnobody/Image-Generator-Charactor-8bit.git",
+         "web" : "https://github.com/ytnobody/Image-Generator-Charactor-8bit"
+      }
+   },
    "version" : "0.01"
 }
