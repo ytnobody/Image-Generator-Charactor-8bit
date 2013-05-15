@@ -60,6 +60,12 @@ If you want to generate an image of humanoid character,
     my $human = Image::Generator::Charactor::8bit->load_parts('Humanoid');
     $human->write(file => '/tmp/human.png');
 
+then, you want to generate mohawk humanoid,
+
+    my $hair = Image::Generator::Charactor::8bit->load_parts('Humanoid::Hair::Mohawk');
+    my $mohawk = Image::Generator::Charactor::8bit->compose($human, $hair);
+    $mohawk->write(file => '/tmp/mohawk.png');
+
 and, If you want to generate another image of humanoid that has green skin,
 
     use Imager;
