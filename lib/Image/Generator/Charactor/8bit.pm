@@ -8,16 +8,17 @@ our $VERSION = "0.01";
 use Imager;
 use Class::Load ':all';
 
+sub create_canvas { Imager->new(xsize => 16, ysize => 16, channels => 4) }
+
 sub image_from_pixel {
     my ($class, $pixels, $color) = @_;
     $color ||= Imager::Color->new(0, 0, 0);
-    my $image = Imager->new(xsize => 16, ysize => 16, channels => 4);
+    my $image = $class->create_canvas;
     my @px_array = split(/\n/, $pixels);
     for my $y (0 .. 15) {
         for my $x (0 .. 15) {
             my $bit = substr($px_array[$y], $x, 1);
             if ($bit eq '*') {
-                printf "%sx%s\n", $x, $y;
                 $image->setpixel(x => $x, y => $y, color => $color);
             }
         }
@@ -31,6 +32,15 @@ sub load_parts {
     load_class($parts_class) unless is_class_loaded($parts_class);
     $color ||= Imager::Color->new($parts_class->default_color);
     $class->image_from_pixel( $parts_class->pixel, $color );
+}
+
+sub compose {
+    my ($class, @layers) = @_;
+    my $image = $class->create_canvas;
+    for my $layer ( @layers ) {
+        $image->compose(tx => 0, ty => 0, src => $layer);
+    }
+    return $image;
 }
 
 1;
